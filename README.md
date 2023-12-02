@@ -87,7 +87,8 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 <!-- region measurements -->
 |   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
 |------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
-|     1 |      59 |     169 |    1366 |                   6 |                  9728 |               30 |              61952 |
+|     1 |      59 |     169 |    1366 |                   6 |                  9728 |               30 |              61978 |
+|     2 |      71 |     161 |    1557 |                   0 |                  9882 |               20 |              61952 |
 <!-- endregion measurements -->
 
 ## Structure
