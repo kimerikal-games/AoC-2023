@@ -1,0 +1,3 @@
+Day,Lines,Words,Bytes,CPython Time [ms],CPython Memory [KB],PyPy Time [ms],PyPy Memory [KB]
+0,26,39,300,4,9370,10,51968
+1,59,169,1366,10,9728,30,61978
