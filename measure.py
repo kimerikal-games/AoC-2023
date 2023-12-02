@@ -28,6 +28,8 @@ results = []
 for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
     result = {}
     day = int(day_path.name)
+    if day == 0:
+        continue
     result["Day"] = day
 
     wc = subprocess.run(["wc", str(day_path / "program.py")], check=True, capture_output=True, text=True)
@@ -61,5 +63,19 @@ for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
     results.append(result)
 
 df = pd.DataFrame(results).set_index("Day").sort_index()
-df.to_csv("measure.csv")
+
+md = df.to_markdown()
+start = "<!-- region measurements -->"
+end = "<!-- endregion measurements -->"
+with open("README.md", "r") as f:
+    readme = f.read()
+
+start_index = readme.index(start)
+end_index = readme.index(end)
+
+readme = readme[: start_index + len(start)] + "\n" + md + "\n" + readme[end_index:]
+
+with open("README.md", "w") as f:
+    f.write(readme)
+
 print(df)
