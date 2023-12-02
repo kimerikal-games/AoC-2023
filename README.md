@@ -28,7 +28,7 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/01/program.py">1</a></td>
-            <td align="center">2</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/02/program.py">2</a></td>
         </tr>
         <tr>
             <td align="center">3</td>
