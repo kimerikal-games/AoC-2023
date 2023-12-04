@@ -32,7 +32,7 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
         </tr>
         <tr>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/03/program.py">3</a></td>
-            <td align="center">4</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/04/program.py">4</a></td>
             <td align="center">5</td>
             <td align="center">6</td>
             <td align="center">7</td>
@@ -87,9 +87,10 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 <!-- region measurements -->
 |   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
 |------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
-|     1 |      59 |     169 |    1366 |                  10 |                  9728 |               38 |              61926 |
-|     2 |      71 |     161 |    1557 |                   4 |                  9856 |               24 |              61952 |
+|     1 |      59 |     169 |    1366 |                  10 |                  9754 |               30 |              61798 |
+|     2 |      71 |     161 |    1557 |                   8 |                  9882 |               20 |              61952 |
 |     3 |      94 |     328 |    2745 |                  10 |                 10112 |               40 |              63360 |
+|     4 |      41 |     112 |    1016 |                   8 |                  9728 |               18 |              61466 |
 <!-- endregion measurements -->
 
 ## Structure
