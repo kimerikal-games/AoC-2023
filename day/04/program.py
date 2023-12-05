@@ -23,18 +23,18 @@ def part1(values: list[int]) -> int:
 
 
 def part2(values: list[int]) -> int:
-    count_table = [None] * len(values)
+    count_table: list[int | None] = [None] * len(values)
+    return sum(subproblem(values, index, count_table) for index in range(len(values)))
 
-    def subproblem(index: int) -> int:
-        if count_table[index] is None:
-            count_table[index] = 1 + sum(
-                subproblem(other_index)
-                for other_index in range(index + 1, index + values[index] + 1)
-                if other_index < len(values)
-            )
-        return count_table[index]
 
-    return sum(map(subproblem, range(len(values))))
+def subproblem(values: list[int], index: int, count_table: list[int | None]) -> int:
+    if count_table[index] is None:
+        count_table[index] = 1 + sum(
+            subproblem(values, other_index, count_table)
+            for other_index in range(index + 1, index + values[index] + 1)
+            if other_index < len(values)
+        )
+    return count_table[index]  # type: ignore
 
 
 if __name__ == "__main__":

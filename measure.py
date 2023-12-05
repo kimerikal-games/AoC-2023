@@ -2,14 +2,12 @@
 import pathlib
 import subprocess
 import statistics
+import time as time_
 
 import pandas as pd
 from tqdm.auto import tqdm
 
-TIME_REPEAT = 5
-TIME_TOPK = 3
-MEM_WORSTK = 3
-
+REPEATS = 5
 
 interpreters = [
     ("CPython", "python3.10"),
@@ -41,8 +39,10 @@ for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
     for interpreter_name, interpreter_cmd in interpreters:
         times = []
         memories = []
-        for i in range(TIME_REPEAT):
-            pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{TIME_REPEAT}")
+        for i in range(REPEATS):
+            time_.sleep(0.1)
+
+            pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{REPEATS}")
             time = subprocess.run(
                 ["time", "-f", "%S %U %M", interpreter_cmd, str(day_path / "program.py")],
                 stdin=open(day_path / "in.txt"),
@@ -54,11 +54,8 @@ for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
             times.append(time)
             memories.append(memory)
 
-        times = sorted(times)[:TIME_TOPK]
-        memories = sorted(memories)[-MEM_WORSTK:]
-
-        result[f"{interpreter_name} Time [s]"] = f"{statistics.fmean(times):.3f}"
-        result[f"{interpreter_name} Memory [KB]"] = f"{round(statistics.fmean(memories), -3):.0f}"
+        result[f"{interpreter_name} Time [s]"] = f"{statistics.fmean(times):.03f}"
+        result[f"{interpreter_name} Memory [KB]"] = f"{round(statistics.fmean(memories), -2):.0f}"
 
     results.append(result)
 

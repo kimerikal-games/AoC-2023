@@ -4,6 +4,10 @@ Author: kimerikal <kimerikal.games@gmail.com>
 """
 import sys
 
+_WORDS = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+_DIGIT_MAP = {word: digit for digit, word in enumerate(_WORDS, start=1)}
+_DIGIT_MAP |= {str(digit): digit for digit in range(10)}
+
 
 def main() -> int:
     lines = sys.stdin.readlines()
@@ -14,45 +18,29 @@ def main() -> int:
     return 0
 
 
-def part1(lines: list[str]):
-    total = 0
-    for line in lines:
-        digits = [int(digit) for digit in line.strip() if digit.isdigit()]
-        if digits:
-            first = digits[0]
-            last = digits[-1]
-            value = 10 * first + last
-        else:
-            value = 0
-        total += value
-
-    return total
+def part1(lines: list[str]) -> int:
+    return sum(map(get_part1_line_value, lines))
 
 
-def part2(lines: list[str]):
-    tofind = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9}
-    tofind |= {str(digit): digit for digit in range(10)}
+def part2(lines: list[str]) -> int:
+    return sum(map(get_part2_line_value, lines))
 
-    total = 0
-    for line in lines:
-        digits = []
-        for word, value in tofind.items():
-            last = 0
-            while True:
-                index = line.find(word, last)
-                if index == -1:
-                    break
-                last = index + 1
-                digits.append((index, value))
-        if digits:
-            first = min(digits)[1]
-            last = max(digits)[1]
-            value = 10 * first + last
-        else:
-            value = 0
-        total += value
 
-    return total
+def get_part1_line_value(line: str) -> int:
+    digits = [int(digit) for digit in line.strip() if digit.isdigit()]
+    value = 10 * digits[0] + digits[-1]
+    return value
+
+
+def get_part2_line_value(line: str) -> int:
+    index_value_pairs: list[tuple[int, int]] = []
+    for word, value in _DIGIT_MAP.items():
+        last = 0
+        while (index := line.find(word, last)) != -1:
+            last = index + 1
+            index_value_pairs.append((index, value))
+    value = 10 * min(index_value_pairs)[1] + max(index_value_pairs)[1]
+    return value
 
 
 if __name__ == "__main__":
