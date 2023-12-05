@@ -33,7 +33,7 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
         <tr>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/03/program.py">3</a></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/04/program.py">4</a></td>
-            <td align="center">5</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/05/program.py">5</a></td>
             <td align="center">6</td>
             <td align="center">7</td>
             <td align="center">8</td>
@@ -76,12 +76,13 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 ## Measurements
 
 <!-- region measurements -->
-|   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
-|------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
-|     1 |      59 |     169 |    1366 |                  10 |                  9754 |               30 |              61798 |
-|     2 |      71 |     161 |    1557 |                   8 |                  9882 |               20 |              61952 |
-|     3 |      94 |     328 |    2745 |                  10 |                 10112 |               40 |              63360 |
-|     4 |      41 |     112 |    1016 |                   8 |                  9728 |               18 |              61466 |
+|   Day |   Lines |   Words |   Bytes |   CPython Time [s] |   CPython Memory [KB] |   PyPy Time [s] |   PyPy Memory [KB] |
+|------:|--------:|--------:|--------:|-------------------:|----------------------:|----------------:|-------------------:|
+|     1 |      59 |     169 |    1366 |              0.007 |                 10000 |           0.03  |              62000 |
+|     2 |      71 |     161 |    1557 |              0.003 |                 10000 |           0.027 |              62000 |
+|     3 |      94 |     328 |    2745 |              0.01  |                 10000 |           0.04  |              64000 |
+|     4 |      41 |     112 |    1016 |              0.01  |                 10000 |           0.017 |              61000 |
+|     5 |      91 |     275 |    2638 |              8.773 |                 11000 |           0.853 |              67000 |
 <!-- endregion measurements -->
 
 ## Structure
