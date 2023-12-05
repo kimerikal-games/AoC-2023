@@ -11,13 +11,13 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
             <th colspan="7"><div align="center">December 2023</div></th>
         </tr>
         <tr>
-            <th align="center">Sun</th>
-            <th align="center">Mon</th>
-            <th align="center">Tue</th>
-            <th align="center">Wed</th>
-            <th align="center">Thu</th>
-            <th align="center">Fri</th>
-            <th align="center">Sat</th>
+            <th align="center">S</th>
+            <th align="center">M</th>
+            <th align="center">T</th>
+            <th align="center">W</th>
+            <th align="center">T</th>
+            <th align="center">F</th>
+            <th align="center">S</th>
         </tr>
     </thead>
     <tbody>
@@ -60,15 +60,6 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
         <tr>
             <td align="center">24</td>
             <td align="center">25</td>
-            <td align="center">26</td>
-            <td align="center">27</td>
-            <td align="center">28</td>
-            <td align="center">29</td>
-            <td align="center">30</td>
-        </tr>
-        <tr>
-            <td align="center">31</td>
-            <td align="center"></td>
             <td align="center"></td>
             <td align="center"></td>
             <td align="center"></td>
@@ -95,40 +86,48 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 
 ## Structure
 
-Each day is stored in its own directory inside `day` directory, with the input in `input.txt` and the solution in `solution.py`.
-
 ```plain
 .
-├── config.json
-├── generate.py
+├── config.json         # Current year, name, and email
+├── generate.py         # Prepare directory for new puzzle
+├── measure.py          # Measure code length, running time/memory
+├── day
+│   ├── 00              # Template directory
+│   │   ├── in.txt
+│   │   ├── out.txt
+│   │   └── program.py
+│   ├── 01
+│   │   ├── in.txt      # Full input text
+│   │   ├── out.txt     # Puzzle answer
+│   │   └── program.py  # Solution code
+│   ├── ...
+│   └── 25
+│       ├── in.txt
+│       ├── out.txt
+│       └── program.py
 ├── LICENSE
-├── README.md
-└── day
-     ├── 00  # Template directory
-     │   ├── input.txt
-     │   └── solution.py
-     ├── 01
-     │   ├── input.txt
-     │   └── solution.py
-     ├── ...
-     └── 25
-         ├── input.txt
-         └── solution.py
+└── README.md
 ```
 
 ## Usage
 
-First, set up `config.json`.
+For the first time, set up `config.json`.
 
-To **generate a directory** for a new day, run
-```sh
+```bash
+# Generate a directory
 $ python3 generate.py <day>
-$ python3 generate.py 5 # Populate day/05 directory
-```
-This will create a copy of template directory `00/` and change the name and contents of the files to match the day and problem title.
 
-To **run the solution** for a day, run
-```sh
-$ python3 day/<day>/solution.py < day/<day>/input.txt
-$ python3 day/05/solution.py < day/05/input.txt  # Example
+# Measure performance
+$ python3 measure.py
 ```
+
+Running measure.py will automatically update *Measurements* section in this `README.md` file.
+
+## Other helpful tools
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Competitive Programming Helper (cph)](https://marketplace.visualstudio.com/items?itemName=DivyanshuAgrawal.competitive-programming-helper)
+
+## License
+
+See `LICENSE` file.
