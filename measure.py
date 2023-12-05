@@ -6,9 +6,9 @@ import statistics
 import pandas as pd
 from tqdm.auto import tqdm
 
-TIME_REPEAT = 25
-TIME_TOPK = 5
-MEM_WORSTK = 5
+TIME_REPEAT = 5
+TIME_TOPK = 3
+MEM_WORSTK = 3
 
 
 interpreters = [
@@ -57,8 +57,8 @@ for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
         times = sorted(times)[:TIME_TOPK]
         memories = sorted(memories)[-MEM_WORSTK:]
 
-        result[f"{interpreter_name} Time [ms]"] = round(statistics.fmean(times) * 1000)
-        result[f"{interpreter_name} Memory [KB]"] = round(statistics.fmean(memories))
+        result[f"{interpreter_name} Time [s]"] = f"{statistics.fmean(times):.3f}"
+        result[f"{interpreter_name} Memory [KB]"] = f"{round(statistics.fmean(memories), -3):.0f}"
 
     results.append(result)
 
