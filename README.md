@@ -34,7 +34,7 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/03/program.py">3</a></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/04/program.py">4</a></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/05/program.py">5</a></td>
-            <td align="center">6</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/06/program.py">6</a></td>
             <td align="center">7</td>
             <td align="center">8</td>
             <td align="center">9</td>
@@ -76,13 +76,17 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 ## Measurements
 
 <!-- region measurements -->
-|   Day |   Lines |   Words |   Bytes |   CPython Time [s] |   CPython Memory [KB] |   PyPy Time [s] |   PyPy Memory [KB] |
-|------:|--------:|--------:|--------:|-------------------:|----------------------:|----------------:|-------------------:|
-|     1 |      47 |     144 |    1237 |              0.01  |                  9800 |           0.032 |              62200 |
-|     2 |      53 |     142 |    1447 |              0.004 |                  9900 |           0.024 |              62600 |
-|     3 |     109 |     384 |    2926 |              0.018 |                 10600 |           0.064 |              65300 |
-|     4 |      41 |     131 |    1124 |              0.002 |                  9700 |           0.018 |              61600 |
-|     5 |      97 |     305 |    2917 |              9.234 |                  9900 |           0.89  |              61500 |
+- CPython: Python 3.10.12
+- PyPy: Python 3.10.13 (f1607341da97ff5a1e93430b6e8c4af0ad1aa019, Sep 28 2023, 05:41:26) [PyPy 7.3.13 with GCC 10.2.1 20210130 (Red Hat 10.2.1-11)]
+
+|   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
+|------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
+|     1 |      47 |     144 |    1237 |                  10 |                  9696 |               30 |              62208 |
+|     2 |      53 |     142 |    1447 |                   8 |                  9792 |               22 |              62656 |
+|     3 |     109 |     384 |    2926 |                  18 |                 10528 |               60 |              65216 |
+|     4 |      41 |     131 |    1124 |                   8 |                  9760 |               15 |              61536 |
+|     5 |      97 |     305 |    2917 |                9355 |                  9760 |              898 |              61472 |
+|     6 |      38 |     119 |    1091 |                   5 |                  9696 |                5 |              52832 |
 <!-- endregion measurements -->
 
 ## Structure

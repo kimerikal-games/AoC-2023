@@ -7,12 +7,14 @@ import time as time_
 import pandas as pd
 from tqdm.auto import tqdm
 
+
 REPEATS = 5
 
 interpreters = [
     ("CPython", "python3.10"),
     ("PyPy", "pypy3.10"),
 ]
+
 
 print("Interpreters:")
 for interpreter_name, interpreter_cmd in interpreters:
@@ -21,9 +23,13 @@ for interpreter_name, interpreter_cmd in interpreters:
     print(out.stdout.strip())
 print()
 
+
 results = []
 
-for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
+paths = sorted(pathlib.Path("day").iterdir())
+pbar_total = len(paths) * len(interpreters) * REPEATS
+pbar_format = "{l_bar}|{bar}| {n_fmt}/{total_fmt}{postfix}"
+for day_path in (pbar := tqdm(paths, total=pbar_total, bar_format=pbar_format)):
     result = {}
     day = int(day_path.name)
     if day == 0:
@@ -54,16 +60,34 @@ for day_path in (pbar := tqdm(sorted(pathlib.Path("day").iterdir()))):
             times.append(time)
             memories.append(memory)
 
-        result[f"{interpreter_name} Time [s]"] = f"{statistics.fmean(times):.03f}"
-        result[f"{interpreter_name} Memory [KB]"] = f"{round(statistics.fmean(memories), -2):.0f}"
+            pbar.update()
+
+        times = sorted(times)[:-1]
+        memories = sorted(memories)[:-1]
+
+        result[f"{interpreter_name} Time [ms]"] = round(statistics.fmean(times) * 1000)
+        result[f"{interpreter_name} Memory [KB]"] = round(statistics.fmean(memories))
 
     results.append(result)
 
 df = pd.DataFrame(results).set_index("Day").sort_index()
 
-md = df.to_markdown()
+print(df)
+
+
+md = ""
+for interpreter_name, interpreter_cmd in interpreters:
+    out = subprocess.run([interpreter_cmd, "--version"], check=True, capture_output=True, text=True)
+    out = out.stdout.replace("\n", " ").strip()
+    md += f"- {interpreter_name}: {out}\n"
+md += "\n"
+
+md += df.to_markdown()
+
+
 start = "<!-- region measurements -->"
 end = "<!-- endregion measurements -->"
+
 with open("README.md", "r") as f:
     readme = f.read()
 
@@ -74,5 +98,3 @@ readme = readme[: start_index + len(start)] + "\n" + md + "\n" + readme[end_inde
 
 with open("README.md", "w") as f:
     f.write(readme)
-
-print(df)
