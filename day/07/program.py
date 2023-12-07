@@ -79,10 +79,9 @@ def hand_value_part2(hand: Hand) -> HandValue:
 
 
 def replace_joker(hand: str):
-    cards = "23456789TJQKA"
     joker_idxs = [i for i, card in enumerate(hand) if card == "J"]
     hand_list = list(hand)
-    for replaced in product(cards, repeat=len(joker_idxs)):
+    for replaced in product(set(hand), repeat=len(joker_idxs)):
         for idx, card in zip(joker_idxs, replaced):
             hand_list[idx] = card
         yield "".join(hand_list)
