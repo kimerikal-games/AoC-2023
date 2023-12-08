@@ -116,6 +116,8 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 └── README.md
 ```
 
+`in.txt` files are visible only in local.
+
 ## Usage
 
 For the first time, set up `config.json`.
