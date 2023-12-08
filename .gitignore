@@ -1,3 +1,5 @@
 .vscode/
 .cph/
 .mypy_cache/
+day/*/in.txt
+!day/00/in.txt
