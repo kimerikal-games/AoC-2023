@@ -4,36 +4,13 @@ Author: kimerikal <kimerikal.games@gmail.com>
 """
 import sys
 from collections import Counter
-from enum import IntEnum
 from itertools import product
-from typing import Callable, NamedTuple
+from typing import Any, Callable, NamedTuple, TypeAlias
 
 
-class HandType(IntEnum):
-    FIVE_OF_A_KIND  = -10
-    FOUR_OF_A_KIND  = -20
-    FULL_HOUSE      = -30
-    THREE_OF_A_KIND = -40
-    TWO_PAIR        = -50
-    ONE_PAIR        = -60
-    HIGH_CARD       = -70
-
-    @classmethod
-    def from_hand(cls, hand: 'Hand') -> "HandType":
-        match sorted(Counter(hand).values(), reverse=True):
-            case [5]:             return cls.FIVE_OF_A_KIND
-            case [4, 1]:          return cls.FOUR_OF_A_KIND
-            case [3, 2]:          return cls.FULL_HOUSE
-            case [3, 1, 1]:       return cls.THREE_OF_A_KIND
-            case [2, 2, 1]:       return cls.TWO_PAIR
-            case [2, 1, 1, 1]:    return cls.ONE_PAIR
-            case [1, 1, 1, 1, 1]: return cls.HIGH_CARD
-            case _:               assert False, "Unreachable"
-
-
-Hand = str
-HandValue = tuple[HandType, tuple[int, ...]]
-Game = NamedTuple("Game", [("hand", Hand), ("bid", int)])
+Hand: TypeAlias = str
+Game = NamedTuple("Game", hand=Hand, bid=int)
+ValueTuple = tuple[Any, ...]
 
 
 def main() -> int:
@@ -51,34 +28,42 @@ def main() -> int:
 
 
 def part1(games: list[Game]) -> int:
-    return compute_winnings(games, hand_value_part1)
+    return compute_winnings(games, compute_hand_value_part1)
 
 
 def part2(games: list[Game]) -> int:
-    return compute_winnings(games, hand_value_part2)
+    return compute_winnings(games, compute_hand_value_part2)
 
 
-def compute_winnings(games: list[Game], hand_value_fn: Callable[[Hand], HandValue]) -> int:
-    ordered_games = sorted(games, key=lambda game: hand_value_fn(game.hand))
+def compute_winnings(games: list[Game], compute_hand_value_fn: Callable[[Hand], ValueTuple]) -> int:
+    ordered_games = sorted(games, key=lambda game: compute_hand_value_fn(game.hand))
     winnings = sum(rank * game.bid for rank, game in enumerate(ordered_games, start=1))
     return winnings
 
 
-def hand_value_part1(hand: Hand) -> HandValue:
-    cards = "23456789TJQKA"
-    hand_type = HandType.from_hand(hand)
-    hand_tuple = tuple(map(cards.index, hand))
-    return (hand_type, hand_tuple)
+def compute_hand_value_part1(hand: Hand) -> ValueTuple:
+    card_order = "23456789TJQKA"
+    hand_type_value = compute_hand_type_value(hand)
+    hand_card_value = compute_hand_card_value(hand, card_order)
+    return (hand_type_value, hand_card_value)
 
 
-def hand_value_part2(hand: Hand) -> HandValue:
-    cards = "J23456789TQKA"
-    hand_type = max(map(HandType.from_hand, replace_joker(hand)))
-    hand_tuple = tuple(map(cards.index, hand))
-    return (hand_type, hand_tuple)
+def compute_hand_value_part2(hand: Hand) -> ValueTuple:
+    card_order = "J23456789TQKA"
+    hand_type_value = max(map(compute_hand_type_value, replace_jokers(hand)))
+    hand_card_value = compute_hand_card_value(hand, card_order)
+    return (hand_type_value, hand_card_value)
 
 
-def replace_joker(hand: str):
+def compute_hand_type_value(hand: Hand) -> ValueTuple:
+    return tuple(sorted(Counter(hand).values(), reverse=True))
+
+
+def compute_hand_card_value(hand: Hand, card_order: str) -> ValueTuple:
+    return tuple(map(card_order.index, hand))
+
+
+def replace_jokers(hand: Hand):
     joker_idxs = [i for i, card in enumerate(hand) if card == "J"]
     hand_list = list(hand)
     for replaced in product(set(hand), repeat=len(joker_idxs)):
