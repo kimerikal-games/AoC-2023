@@ -36,7 +36,7 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/05/program.py">5</a></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/06/program.py">6</a></td>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/07/program.py">7</a></td>
-            <td align="center">8</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/08/program.py">8</a></td>
             <td align="center">9</td>
         </tr>
         <tr>
@@ -81,13 +81,14 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 
 |   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
 |------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
-|     1 |      47 |     144 |    1237 |                  10 |                  9728 |               38 |              62080 |
-|     2 |      53 |     142 |    1447 |                  10 |                  9856 |               28 |              62560 |
-|     3 |     109 |     384 |    2926 |                  18 |                 10688 |               70 |              65088 |
-|     4 |      41 |     131 |    1124 |                  10 |                  9696 |               20 |              61504 |
-|     5 |      97 |     305 |    2917 |                9635 |                  9920 |              818 |              61376 |
-|     6 |      38 |     119 |    1091 |                   5 |                  9664 |               10 |              52736 |
-|     7 |      91 |     277 |    2676 |                  20 |                 11104 |               90 |              66432 |
+|     1 |      47 |     144 |    1237 |                  10 |                  9728 |               32 |              62208 |
+|     2 |      53 |     142 |    1447 |                   8 |                  9888 |               25 |              62592 |
+|     3 |     109 |     384 |    2926 |                  18 |                 10656 |               65 |              65152 |
+|     4 |      41 |     131 |    1124 |                   5 |                  9792 |               15 |              61504 |
+|     5 |      97 |     305 |    2917 |                8838 |                  9920 |              845 |              61440 |
+|     6 |      38 |     119 |    1091 |                   5 |                  9664 |                8 |              52736 |
+|     7 |      76 |     212 |    2231 |                  18 |                 11200 |               80 |              66976 |
+|     8 |      59 |     172 |    1550 |                  18 |                 10304 |               35 |              63232 |
 <!-- endregion measurements -->
 
 ## Structure
