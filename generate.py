@@ -37,6 +37,17 @@ def main(args: argparse.Namespace, config: dict) -> None:
     with open(f"day/{day:02d}/program.py", "w") as fw:
         fw.write(substituted)
 
+    with open("README.md", "r") as f:
+        readme = f.read()
+
+    readme.replace(
+        f'<td align="center">{day}</td>',
+        f'<td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/{day:02d}/program.py">{day}</a></td>',
+    )
+
+    with open("README.md", "w") as f:
+        f.write(readme)
+
     print("Done!")
 
 

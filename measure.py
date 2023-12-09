@@ -46,9 +46,10 @@ for day_path in (pbar := tqdm(paths, total=pbar_total, bar_format=pbar_format)):
         times = []
         memories = []
         for i in range(REPEATS):
+            pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{REPEATS}")
+            pbar.update()
             time_.sleep(0.1)
 
-            pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{REPEATS}")
             time = subprocess.run(
                 ["time", "-f", "%S %U %M", interpreter_cmd, str(day_path / "program.py")],
                 stdin=open(day_path / "in.txt"),
@@ -59,8 +60,6 @@ for day_path in (pbar := tqdm(paths, total=pbar_total, bar_format=pbar_format)):
             time, memory = float(time[0]) + float(time[1]), float(time[2])
             times.append(time)
             memories.append(memory)
-
-            pbar.update()
 
         times = sorted(times)[:-1]
         memories = sorted(memories)[:-1]
