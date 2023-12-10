@@ -40,7 +40,7 @@ def main(args: argparse.Namespace, config: dict) -> None:
     with open("README.md", "r") as f:
         readme = f.read()
 
-    readme.replace(
+    readme = readme.replace(
         f'<td align="center">{day}</td>',
         f'<td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/{day:02d}/program.py">{day}</a></td>',
     )
