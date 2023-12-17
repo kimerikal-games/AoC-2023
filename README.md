@@ -41,15 +41,15 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
         </tr>
         <tr>
             <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/10/program.py">10</a></td>
-            <td align="center">11</td>
-            <td align="center">12</td>
-            <td align="center">13</td>
-            <td align="center">14</td>
-            <td align="center">15</td>
-            <td align="center">16</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/11/program.py">11</a></td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/12/program.py">12</a></td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/13/program.py">13</a></td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/14/program.py">14</a></td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/15/program.py">15</a></td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/16/program.py">16</a></td>
         </tr>
         <tr>
-            <td align="center">17</td>
+            <td align="center"><a href="https://codeberg.org/kimerikal/AoC-2023/src/branch/main/day/17/program.py">17</a></td>
             <td align="center">18</td>
             <td align="center">19</td>
             <td align="center">20</td>
@@ -81,16 +81,23 @@ My solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 
 |   Day |   Lines |   Words |   Bytes |   CPython Time [ms] |   CPython Memory [KB] |   PyPy Time [ms] |   PyPy Memory [KB] |
 |------:|--------:|--------:|--------:|--------------------:|----------------------:|-----------------:|-------------------:|
-|     1 |      47 |     144 |    1237 |                   8 |                  9792 |               30 |              62080 |
-|     2 |      53 |     142 |    1447 |                   8 |                  9856 |               25 |              62496 |
-|     3 |     109 |     384 |    2926 |                  15 |                 10560 |               62 |              65024 |
-|     4 |      41 |     131 |    1124 |                   5 |                  9728 |               18 |              61472 |
-|     5 |      97 |     305 |    2917 |                9065 |                  9792 |              830 |              61312 |
-|     6 |      38 |     119 |    1091 |                   5 |                  9632 |                8 |              52736 |
-|     7 |      76 |     212 |    2231 |                  20 |                 11040 |               82 |              66912 |
-|     8 |      59 |     172 |    1550 |                  15 |                 10304 |               32 |              63136 |
-|     9 |      39 |     104 |     958 |                  10 |                  9792 |               25 |              61952 |
-|    10 |     127 |     409 |    3256 |                  20 |                 11771 |               40 |              65280 |
+|     1 |      47 |     144 |    1237 |                   8 |         9152          |               40 |     62080          |
+|     2 |      53 |     142 |    1447 |                   5 |         9568          |               30 |     62592          |
+|     3 |     109 |     384 |    2926 |                  20 |        10368          |               70 |     65152          |
+|     4 |      41 |     131 |    1124 |                   0 |         8960          |               20 |     61568          |
+|     5 |      97 |     305 |    2917 |               10440 |         9088          |              960 |     61440          |
+|     6 |      38 |     119 |    1091 |                   0 |         9024          |               10 |     52768          |
+|     7 |      76 |     212 |    2231 |                  20 |        10752          |               80 |     66944          |
+|     8 |      59 |     172 |    1550 |                  20 |        10112          |               30 |     63232          |
+|     9 |      39 |     104 |     958 |                   8 |         9120          |               30 |     62080          |
+|    10 |     127 |     409 |    3256 |                  20 |        11272          |               40 |     65408          |
+|    11 |      57 |     190 |    1308 |                  30 |         8960          |               20 |     61824          |
+|    12 |      59 |     205 |    1709 |                4510 |        10112          |              640 |    105472          |
+|    13 |      80 |     256 |    2215 |                  10 |        10656          |               30 |     64512          |
+|    14 |      83 |     239 |    2023 |                 730 |        11776          |              350 |    103040          |
+|    15 |      80 |     224 |    1942 |                  20 |        10368          |               50 |     64256          |
+|    16 |      84 |     322 |    2327 |                1780 |        11892          |              840 |    131744          |
+|    17 |     186 |    1010 |    7029 |              104080 |            1.3469e+06 |            76800 |         1.4609e+06 |
 <!-- endregion measurements -->
 
 ## Structure
