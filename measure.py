@@ -57,15 +57,17 @@ for day_path in (pbar := tqdm(paths, total=pbar_total, bar_format=pbar_format)):
                 text=True,
             )
             time = time.stderr.split()
-            time, memory = float(time[0]) + float(time[1]), float(time[2])
+            time, memory = 1000 * (float(time[0]) + float(time[1])), float(time[2])
+            if time > 10:
+                break
             times.append(time)
             memories.append(memory)
+        else:
+            time = round(statistics.fmean(sorted(times)[:-1]))
+            memory = round(statistics.fmean(sorted(memories)[:-1]))
 
-        times = sorted(times)[:-1]
-        memories = sorted(memories)[:-1]
-
-        result[f"{interpreter_name} Time [ms]"] = round(statistics.fmean(times) * 1000)
-        result[f"{interpreter_name} Memory [KB]"] = round(statistics.fmean(memories))
+        result[f"{interpreter_name} Time [ms]"] = time
+        result[f"{interpreter_name} Memory [KB]"] = memory
 
     results.append(result)
 
