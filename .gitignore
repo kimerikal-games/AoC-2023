@@ -1,5 +1,6 @@
 .vscode/
 .cph/
 .mypy_cache/
+venv/
 day/*/in.txt
 !day/00/in.txt
