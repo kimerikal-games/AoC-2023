@@ -15,7 +15,10 @@ def main(args: argparse.Namespace, config: dict) -> None:
 
     url = f"https://adventofcode.com/{year}/day/{day}"
     with requests.get(url) as response:
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            raise RuntimeError(f"Check if the day is correct and the puzzle is released.") from err
         soup = bs4.BeautifulSoup(response.text, "html.parser")
 
     title = soup.select_one("article.day-desc h2").text
