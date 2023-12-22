@@ -45,31 +45,39 @@ for day_path in (pbar := tqdm(paths, total=pbar_total, bar_format=pbar_format)):
     for interpreter_name, interpreter_cmd in interpreters:
         times = []
         memories = []
-        for i in range(REPEATS):
-            pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{REPEATS}")
-            pbar.update()
-            time_.sleep(0.1)
+        try:
+            for i in range(REPEATS):
+                pbar.set_description_str(f"Day {day:02d} {interpreter_name:>8s} {i+1:2d}/{REPEATS}")
+                pbar.update()
+                time_.sleep(0.1)
 
-            time = subprocess.run(
-                ["time", "-f", "%S %U %M", interpreter_cmd, str(day_path / "program.py")],
-                stdin=open(day_path / "in.txt"),
-                capture_output=True,
-                text=True,
-            )
-            time = time.stderr.split()
-            time, memory = 1000 * (float(time[0]) + float(time[1])), float(time[2])
-            if time > 10:
-                break
-            times.append(time)
-            memories.append(memory)
+                time = subprocess.run(
+                    ["time", "-f", "%S %U %M", interpreter_cmd, str(day_path / "program.py")],
+                    stdin=open(day_path / "in.txt"),
+                    capture_output=True,
+                    text=True,
+                )
+
+                if time.returncode != 0:
+                    raise RuntimeError(f"Day {day:02d} {interpreter_name} failed")
+
+                time = time.stderr.split()
+                time, memory = 1000 * (float(time[0]) + float(time[1])), float(time[2])
+                if time > 10:
+                    break
+                times.append(time)
+                memories.append(memory)
+            else:
+                time = round(statistics.fmean(sorted(times)[:-1]))
+                memory = round(statistics.fmean(sorted(memories)[:-1]))
+        except RuntimeError as e:
+            print(e)
+            break
         else:
-            time = round(statistics.fmean(sorted(times)[:-1]))
-            memory = round(statistics.fmean(sorted(memories)[:-1]))
-
-        result[f"{interpreter_name} Time [ms]"] = time
-        result[f"{interpreter_name} Memory [KB]"] = memory
-
-    results.append(result)
+            result[f"{interpreter_name} Time [ms]"] = time
+            result[f"{interpreter_name} Memory [KB]"] = memory
+    else:
+        results.append(result)
 
 df = pd.DataFrame(results).set_index("Day").sort_index()
 

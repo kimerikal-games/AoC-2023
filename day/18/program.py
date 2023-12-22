@@ -9,7 +9,6 @@ Color: TypeAlias = str
 Dig = tuple[str, int, Color]
 
 MOVES = {"U": (-1, 0), "D": (1, 0), "L": (0, -1), "R": (0, 1)}
-LARGE = sys.maxsize
 
 
 def main() -> int:
